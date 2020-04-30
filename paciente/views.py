@@ -69,8 +69,6 @@ class Teste(GenericAPIView):
     def get(self, request, paciente):
         paciente = get_object_or_404(Paciente, id=paciente)
         print(TreinoRedeNeural.get(self, request=request, var=1))
-        paciente = paciente.values('febreM', 'febreA', 'tosseP', 'tosseS', 'fdeAr', 'dparaResp',
-                                               'pGastrico', 'diarreia')
         if TreinoRedeNeural.get(self, request=request, var=1).predict(paciente.informar()):
             return HttpResponse('Paciente Infectado')
         else:
